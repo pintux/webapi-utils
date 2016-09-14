@@ -1,0 +1,28 @@
+{
+  "name": "webapi-utils",
+  "version": "1.0.0",
+  "description": "Node.js / Express utilities and middlewares for Web APIs",
+  "homepage":"https://github.com/pintux/webapi-utils.git",
+  "main": "index.js",
+  "scripts": {
+
+  },
+  "author": "Antonio Pintus",
+  "license": "MIT",
+  "dependencies": {
+    "debug":"latest"
+  },
+  "devDependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pintux/webapi-utils.git"
+  },
+  "keywords": [
+    "Express",
+    "API",
+    "middleware",
+    "utility"
+  ]
+
+}
