@@ -40,7 +40,7 @@ In your `routes/books.js` Route file:
 
 ```js
 
-var middl = require('webapi-utils').middlewares;
+const middl = require('webapi-utils').middlewares;
 ...
 
 router.use(middl.jsonExtension());
