@@ -1,6 +1,6 @@
 {
   "name": "webapi-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.js / Express utilities and middlewares for Web APIs",
   "homepage":"https://github.com/pintux/webapi-utils.git",
   "main": "index.js",
