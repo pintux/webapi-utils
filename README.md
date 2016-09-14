@@ -25,7 +25,11 @@ Available Middlewares
 **jsonExtension**
 
 This middleware allows to use the dot-notation `.json` in API endpoints URL (Express route paths).
-This feature can be used as a shortcut to require JSON representations of resources, instead of using `Accept: application/json`ß HTTP header only for content-negotiation in an API.
+This feature can be used as a shortcut to require JSON representations of resources, instead of using `Accept: application/json` HTTP header only for content-negotiation in an API.
+
+OK, wait a moment... why using dot-notation when we have HTTP headers?
+
+Be pragmatic! And make your API users happy, as explained in [this guide](https://leanpub.com/thewebapinntux).
 
 
 Basic Example
