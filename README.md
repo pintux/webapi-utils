@@ -1,6 +1,9 @@
 webapi-utils
 ============
 
+[![NPM](https://nodei.co/npm/webapi-utils.png)](https://nodei.co/npm/webapi-utils/)
+
+
 Node.js / Express utilities and middlewares for Web APIs 
 
 
