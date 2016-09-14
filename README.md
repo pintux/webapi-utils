@@ -65,11 +65,11 @@ router.get('/', (req, res, next) => {
 });
 
 ```
-Using this middleware it will be possible to call your endpoint, also with a:
+Using this middleware it will be possible to call your endpoint, also with request like:
 
 `GET /books.json`
 
-or
+or like:
 
 `GET /books`, with `Accept: application/json` HTTP header.
 
