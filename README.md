@@ -22,7 +22,7 @@ Installation
 Available Middlewares
 ---------------------
 
-**jsonExtension**
+**jsonExtension()**
 
 This middleware allows to use the dot-notation `.json` in API endpoints URL (Express route paths).
 This feature can be used as a shortcut to require JSON representations of resources, instead of using `Accept: application/json` HTTP header only for content-negotiation in an API.
@@ -32,8 +32,15 @@ OK, wait a moment... why using dot-notation when we have HTTP headers?
 Be pragmatic! And make your API users happy, as explained in [this guide](https://leanpub.com/thewebapinntux).
 
 
-Basic Example
+
+**jsonLDExtension()**
+This middleware allows to use the dot-notation `.jsonld` in API endpoints URL (Express route paths). 
+This feature can be used as a shortcut to require JSON-LD representations of resources, instead of using `Accept: application/ld+json` HTTP header only for content-negotiation in an API.
+
+Examples
 -------------
+
+**1) Enabling .json requests**
 
 In your Express `app.js` file, set the path:
 
@@ -72,13 +79,73 @@ router.get('/', (req, res, next) => {
 });
 
 ```
-Using this middleware it will be possible to call your endpoint, also with request like:
+Through this middleware it will be possible to call your endpoint with a request like:
 
 `GET /books.json`
 
 or like:
 
-`GET /books`, with `Accept: application/json` HTTP header.
+`GET /books`, using the `Accept: application/json` HTTP header.
+
+---
+
+
+**2) Enabling .json AND .jsonld requests**
+
+In your Express `app.js` file, set the path:
+
+```js
+
+app.use('/books(.json)?(.jsonld)?', books);
+```
+
+In your `routes/books.js` Route file:
+
+
+```js
+
+const middl = require('webapi-utils').middleware;
+...
+
+router.use(middl.jsonExtension());
+router.use(middl.jsonLDExtension());
+...
+
+
+/* GET books listing. */
+router.get('/', (req, res, next) => {
+  res.format({
+      text: function(){
+        res.send(...); //send books as text
+      },
+
+      html: function(){
+        res.send(...); //send books as html
+      },
+
+      json: function(){
+        res.send({ books: [...] }); //send books as json
+      },
+      
+      'application/ld+json': function(){
+              res.send({
+                        "@context": "...",
+                        "title": "Web API",
+                        ...
+                      });
+      }
+  });
+});
+
+```
+Through this middleware it will be possible to call your endpoint with a request like:
+
+`GET /books.json`
+`GET /books.jsonld`
+
+or like:
+
+`GET /books`, using the `Accept: application/ld+json` HTTP header or `Accept: application/json`.
 
 
 Contributors

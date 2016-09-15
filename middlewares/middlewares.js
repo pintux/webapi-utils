@@ -8,12 +8,31 @@
 
 const debug = require('debug')('webapi-utils.middlewares:jsonExtension');
 
+//JSON, raw
 exports.jsonExtension = () => {
     return (req, res, next) => {
         try {
             if (req.originalUrl.endsWith('.json')) {
                 debug('.json extension found');
                 req.headers['accept'] = 'application/json'
+            }
+
+        } catch (error) {
+            debug(error);
+        }
+        finally {
+            next();
+        }
+    }
+};
+
+//JSON-LD
+exports.jsonLDExtension = () => {
+    return (req, res, next) => {
+        try {
+            if (req.originalUrl.endsWith('.jsonld')) {
+                debug('.json-ld extension found');
+                req.headers['accept'] = 'application/ld+json'
             }
 
         } catch (error) {
