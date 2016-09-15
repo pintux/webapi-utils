@@ -34,6 +34,7 @@ Be pragmatic! And make your API users happy, as explained in [this guide](https:
 
 
 **jsonLDExtension()**
+
 This middleware allows to use the dot-notation `.jsonld` in API endpoints URL (Express route paths). 
 This feature can be used as a shortcut to require JSON-LD representations of resources, instead of using `Accept: application/ld+json` HTTP header only for content-negotiation in an API.
 
