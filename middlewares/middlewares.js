@@ -14,7 +14,10 @@ exports.jsonExtension = () => {
         try {
             if (req.originalUrl.endsWith('.json')) {
                 debug('.json extension found');
-                req.headers['accept'] = 'application/json'
+                req.headers['accept'] = 'application/json';
+                req.originalUrl = req.originalUrl.slice(0, -5);
+                req.url = req.url.slice(0, -5);
+
             }
 
         } catch (error) {
@@ -32,7 +35,9 @@ exports.jsonLDExtension = () => {
         try {
             if (req.originalUrl.endsWith('.jsonld')) {
                 debug('.json-ld extension found');
-                req.headers['accept'] = 'application/ld+json'
+                req.headers['accept'] = 'application/ld+json';
+                req.originalUrl = req.originalUrl.slice(0, -7);
+                req.url = req.url.slice(0, -7);
             }
 
         } catch (error) {

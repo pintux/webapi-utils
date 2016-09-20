@@ -47,19 +47,16 @@ In your Express `app.js` file, set the path:
 
 ```js
 
-app.use('/books(.json)?', books);
+const middl = require('webapi-utils').middleware;
+app.use(middl.jsonExtension());
+
+app.use('/books', books);
 ```
 
 In your `routes/books.js` Route file:
 
 
 ```js
-
-const middl = require('webapi-utils').middleware;
-...
-
-router.use(middl.jsonExtension());
-...
 
 
 /* GET books listing. */
@@ -96,22 +93,18 @@ or like:
 In your Express `app.js` file, set the path:
 
 ```js
+const middl = require('webapi-utils').middleware;
+app.use(middl.jsonExtension());
+app.use(middl.jsonLDExtension());
+...
 
-app.use('/books(.json)?(.jsonld)?', books);
+app.use('/books', books);
 ```
 
 In your `routes/books.js` Route file:
 
 
 ```js
-
-const middl = require('webapi-utils').middleware;
-...
-
-router.use(middl.jsonExtension());
-router.use(middl.jsonLDExtension());
-...
-
 
 /* GET books listing. */
 router.get('/', (req, res, next) => {
