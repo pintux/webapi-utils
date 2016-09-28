@@ -6,17 +6,18 @@
 
 'use strict';
 
-const debug = require('debug')('webapi-utils.middlewares:jsonExtension');
+const debug = require('debug')('webapi-utils.middlewares');
 
 //JSON, raw
 exports.jsonExtension = () => {
     return (req, res, next) => {
         try {
-            if (req.originalUrl.endsWith('.json')) {
+            debug('REQUEST --->', req);
+            if (req._parsedUrl.pathname.endsWith('.json')) {
                 debug('.json extension found');
                 req.headers['accept'] = 'application/json';
-                req.originalUrl = req.originalUrl.slice(0, -5);
-                req.url = req.url.slice(0, -5);
+                req.originalUrl = req.originalUrl.replace('.json','');
+                req.url = req.url.replace('.json','');
 
             }
 
@@ -33,11 +34,12 @@ exports.jsonExtension = () => {
 exports.jsonLDExtension = () => {
     return (req, res, next) => {
         try {
-            if (req.originalUrl.endsWith('.jsonld')) {
+            debug('REQUEST --->', req);
+            if (req._parsedUrl.pathname.endsWith('.jsonld')) {
                 debug('.json-ld extension found');
                 req.headers['accept'] = 'application/ld+json';
-                req.originalUrl = req.originalUrl.slice(0, -7);
-                req.url = req.url.slice(0, -7);
+                req.originalUrl = req.originalUrl.replace('.jsonld','');
+                req.url = req.url.replace('.jsonld','');
             }
 
         } catch (error) {
