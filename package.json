@@ -10,7 +10,8 @@
     "check-coverage": "./node_modules/.bin/nyc check-coverage --statements 90 --branches 50 --functions 100 --lines 90",
     "precommit": "npm run cover && npm run check-coverage",
     "commit": "./node_modules/.bin/git-cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "Antonio Pintus",
   "license": "MIT",
