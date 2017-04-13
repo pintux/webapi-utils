@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
       },
 
       json: function(){
-        res.send({ users: [] });
+        res.send({ books: [] });
       },
 
       'application/ld+json': function(){

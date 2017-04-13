@@ -1,6 +1,6 @@
 /*!
  * json-api-ext
- * Copyright(c) 2016 Antonio Pintus
+ * Copyright(c) 2017 Antonio Pintus
  * MIT Licensed
  */
 
@@ -12,12 +12,11 @@ const debug = require('debug')('webapi-utils.middlewares');
 exports.jsonExtension = () => {
     return (req, res, next) => {
         try {
-            debug('REQUEST --->', req);
             if (req._parsedUrl.pathname.endsWith('.json')) {
                 debug('.json extension found');
                 req.headers['accept'] = 'application/json';
-                req.originalUrl = req.originalUrl.replace('.json','');
-                req.url = req.url.replace('.json','');
+                req.originalUrl = req.originalUrl.replace('.json', '');
+                req.url = req.url.replace('.json', '');
 
             }
 
@@ -34,12 +33,11 @@ exports.jsonExtension = () => {
 exports.jsonLDExtension = () => {
     return (req, res, next) => {
         try {
-            debug('REQUEST --->', req);
             if (req._parsedUrl.pathname.endsWith('.jsonld')) {
                 debug('.json-ld extension found');
                 req.headers['accept'] = 'application/ld+json';
-                req.originalUrl = req.originalUrl.replace('.jsonld','');
-                req.url = req.url.replace('.jsonld','');
+                req.originalUrl = req.originalUrl.replace('.jsonld', '');
+                req.url = req.url.replace('.jsonld', '');
             }
 
         } catch (error) {
